@@ -1,0 +1,27 @@
+{
+  "name": "r42-preview-deploy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Deploy static site artifacts to R42 Preview",
+  "main": "dist/index.cjs",
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node24 --format=cjs --outfile=dist/index.cjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "package": "bun run build"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "fflate": "^0.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.1.0"
+  }
+}

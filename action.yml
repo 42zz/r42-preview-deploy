@@ -1,0 +1,42 @@
+name: 'R42 Preview Deploy'
+description: 'Build artifacts を R42 Preview へデプロイする'
+author: '42zz'
+
+inputs:
+  project-id:
+    description: 'R42 プロジェクト ID'
+    required: true
+  directory:
+    description: 'アップロードする成果物ディレクトリ(index.html 必須)'
+    required: true
+  deploy-token:
+    description: 'R42 デプロイトークン(r42d_...)'
+    required: true
+  api-base-url:
+    description: 'R42 API のベース URL(末尾スラッシュなし)'
+    required: true
+  version-name:
+    description: 'バージョン表示名(省略時はコミットメッセージ先頭行)'
+    required: false
+  activate:
+    description: 'ready 後に自動公開するか。false で検証のみ'
+    required: false
+    default: 'true'
+
+outputs:
+  deployment-id:
+    description: '作成された Deployment ID'
+  version-number:
+    description: '採番されたバージョン番号(ready 時)'
+  preview-url:
+    description: '確認 URL'
+  download-url:
+    description: 'ダウンロード URL'
+
+runs:
+  using: node24
+  main: dist/index.cjs
+
+branding:
+  icon: upload-cloud
+  color: blue
